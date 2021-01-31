@@ -8,6 +8,7 @@ Run using
     node findcommon.js 76561197984170060 76561197969177473
 
 
+Substitute the values with your Profile ID and the other person's Profile ID.    
 This script requires that both people have their inventory set to public. 
 
 ### Screenshot
