@@ -28,11 +28,12 @@ async function getTradingCardSetNames(profileId) {
     }
 
     userInventory.descriptions.forEach(element => {
-        userTradingCards.push({ "type": element.type, "name": element.name});
+        if(element.type != "Steam Gems" && element.type != "Booster Pack"){
+            userTradingCards.push({ "type": element.type, "name": element.name});
+        }
     });
 
-    //let uniqueFirstUserTradingCards = [...new Set(userTradingCards)]
-    
+   
     return userTradingCards;
 }
 
