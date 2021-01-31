@@ -39,5 +39,14 @@ async function begin(firstUserProfileId, secondUserProfileId) {
     
 }
 
-(async () => begin("76561197984170060","76561197984170060") )();
+let args = process.argv.slice(2);
+if(args.length < 2){
+    console.error("Plese provide two profile IDs");
+    process.exit(1);
+}
+
+const firstUserProfileId = args[0];
+const secondUserProfileId = args[1];
+
+(async () => begin(firstUserProfileId,secondUserProfileId) )();
 

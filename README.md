@@ -1,6 +1,5 @@
 
 Run using
 
-    node findcommon.js
+    node findcommon.js 76561197984170060 76561197984170060
 
-    
