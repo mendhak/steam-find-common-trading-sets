@@ -17,7 +17,7 @@ const getData = async url => {
 }
 
 
-async function getTradingCardSetNames(profileId) {
+async function getTradingCardSet(profileId) {
     let userTradingCards = [];
 
     const userInventory = await getData(`https://steamcommunity.com/inventory/${profileId}/753/6?l=english&count=5000`);
@@ -32,7 +32,6 @@ async function getTradingCardSetNames(profileId) {
             userTradingCards.push({ "type": element.type, "name": element.name});
         }
     });
-
    
     return userTradingCards;
 }
@@ -53,8 +52,8 @@ async function getCommonSetNames(firstSet, secondSet){
 }
 
 async function begin(firstUserProfileId, secondUserProfileId) {
-    let firstUserSet = await getTradingCardSetNames(firstUserProfileId);
-    let secondUserSet = await getTradingCardSetNames(secondUserProfileId);
+    let firstUserSet = await getTradingCardSet(firstUserProfileId);
+    let secondUserSet = await getTradingCardSet(secondUserProfileId);
     
     let commonSetNames = await getCommonSetNames(firstUserSet, secondUserSet);
 
