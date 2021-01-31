@@ -1,0 +1,15 @@
+{
+  "name": "steam-find-common-trading-sets",
+  "version": "1.0.0",
+  "description": "Script to find common trading set names between two Steam accounts. Useful for cross-set trading",
+  "main": "findcommon.js",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: failed successfully!\" && exit 0"
+  },
+  "author": "mendhak",
+  "license": "MIT"
+}
