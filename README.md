@@ -1,4 +1,4 @@
-Script to find common trading sets between to Steam profiles. 
+A script to find common trading sets between two Steam profiles. This can be useful for helping with cross-trades, and quickly knowing which sets you and another person have in common. 
 
 
 ### Usage
