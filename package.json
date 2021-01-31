@@ -4,7 +4,9 @@
   "description": "Script to find common trading set names between two Steam accounts. Useful for cross-set trading",
   "main": "findcommon.js",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "table": "^6.0.7"
   },
   "devDependencies": {},
   "scripts": {
