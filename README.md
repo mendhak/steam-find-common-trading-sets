@@ -26,3 +26,4 @@ Sometimes I want to do a cross-set trade with another person on Steam.  It would
 - [ ] Make this a Docker container
 - [ ] Show the items one per line within the cell
 - [ ] Show the items alphabetically
+- [ ] Paging - some people will have more than 5000 items!
