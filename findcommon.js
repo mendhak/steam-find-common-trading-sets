@@ -17,11 +17,13 @@ const getData = async url => {
 }
 
 
-async function getTradingCardSet(profileId) {
+async function getTradingCardSet(profileId, startAssetId="") {
     let userTradingCards = [];
 
-    const userInventory = await getData(`https://steamcommunity.com/inventory/${profileId}/753/6?l=english&count=5000`);
+    console.log(chalk.gray(`Fetching inventory for ${profileId}...`));
 
+    const userInventory = await getData(`https://steamcommunity.com/inventory/${profileId}/753/6?l=english&count=5000&start_assetid=${startAssetId}`);
+    
     if(!userInventory.descriptions){
         console.error(`Could not fetch inventory for ${profileId}.`);
         process.exit(1);
@@ -32,6 +34,11 @@ async function getTradingCardSet(profileId) {
             userTradingCards.push({ "type": element.type, "name": element.name});
         }
     });
+
+    if(userInventory.more_items){
+        await new Promise(r => setTimeout(r, 2000));
+        userTradingCards.push(...await getTradingCardSet(profileId,userInventory.last_assetid));
+    }
    
     return userTradingCards;
 }
@@ -53,7 +60,9 @@ async function getCommonSetNames(firstSet, secondSet){
 
 async function begin(firstUserProfileId, secondUserProfileId) {
     let firstUserSet = await getTradingCardSet(firstUserProfileId);
+    console.log(chalk.gray(`${firstUserProfileId} has ${firstUserSet.length} items`));
     let secondUserSet = await getTradingCardSet(secondUserProfileId);
+    console.log(chalk.gray(`${secondUserProfileId} has ${secondUserSet.length} items`));
     
     let commonSetNames = await getCommonSetNames(firstUserSet, secondUserSet);
 
