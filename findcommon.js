@@ -72,7 +72,7 @@ async function begin(firstUserProfileId, secondUserProfileId) {
 
     commonSetNames.forEach(c => {
         let row = [];
-        
+
         firstUserSetItems = firstUserSet.filter(f=>f.type==c);
         secondUserSetItems = secondUserSet.filter(s=>s.type==c);
 
@@ -90,7 +90,7 @@ async function begin(firstUserProfileId, secondUserProfileId) {
             }
             
             return s.name;
-        }).join(', '));
+        }).join('\n'));
         row.push(secondUserSet.filter(s => s.type==c).map(s => {
 
             if(namesOfCommonItemsInThisSet.includes(s.name)){
@@ -98,7 +98,7 @@ async function begin(firstUserProfileId, secondUserProfileId) {
             }
             
             return s.name;
-        }).join(', '));
+        }).join('\n'));
         commonSets.push(row);
     });
 
