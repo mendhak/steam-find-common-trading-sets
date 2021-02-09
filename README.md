@@ -19,8 +19,10 @@ This script requires that both people have their inventory set to public.
 
 Here's an example output
 
-![screenshot](screenshot.png)
+![screenshot](https://raw.githubusercontent.com/mendhak/steam-find-common-trading-sets/master/screenshot.png)
 
+Grayed out text = both users have it  
+White text = either user has it
 
 ### Motivation
 Sometimes I want to do a cross-set trade with another person on Steam.  It would help if I knew which sets are common between us, so that I can easily filter through their inventory without going through hundreds of pages.  
@@ -28,6 +30,6 @@ Sometimes I want to do a cross-set trade with another person on Steam.  It would
 ### TODO
 
 - [x] Make this a Docker container
-- [ ] Show the items one per line within the cell
-- [ ] Show the items alphabetically
+- [X] Show the items one per line within the cell
+- [X] Show the items alphabetically
 - [X] Paging - some people will have more than 5000 items! 76561198129362520
