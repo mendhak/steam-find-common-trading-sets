@@ -30,7 +30,11 @@ async function getTradingCardSet(profileId, startAssetId="") {
     }
 
     userInventory.descriptions.forEach(element => {
-        if(element.type != "Steam Gems" && element.type != "Booster Pack"){
+        if(element.type != "Steam Gems" 
+            && element.type != "Booster Pack" 
+            && !element.type.endsWith("Sticker")
+            && !element.type.endsWith("Emoticon") 
+            && !element.type.endsWith("Background") ){
             userTradingCards.push({ "type": element.type, "name": element.name});
         }
     });
