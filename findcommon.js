@@ -72,10 +72,33 @@ async function begin(firstUserProfileId, secondUserProfileId) {
 
     commonSetNames.forEach(c => {
         let row = [];
+        
+        firstUserSetItems = firstUserSet.filter(f=>f.type==c);
+        secondUserSetItems = secondUserSet.filter(s=>s.type==c);
 
+        //Find the common card names between both sets, so we can gray them out later. 
+        namesOfCommonItemsInThisSet = firstUserSetItems.map(f => f.name).filter(f => secondUserSetItems.map(s=> s.name).includes(f));
+        
+        //The set name
         row.push(chalk.green(c));
-        row.push(firstUserSet.filter(s => s.type==c).map(s => s.name).join(', '));
-        row.push(secondUserSet.filter(s => s.type==c).map(s => s.name).join(', '));
+
+        //The card name
+        row.push(firstUserSet.filter(s => s.type==c).map(s => {
+
+            if(namesOfCommonItemsInThisSet.includes(s.name)){
+                return chalk.dim.white(s.name);
+            }
+            
+            return s.name;
+        }).join(', '));
+        row.push(secondUserSet.filter(s => s.type==c).map(s => {
+
+            if(namesOfCommonItemsInThisSet.includes(s.name)){
+                return chalk.dim.white(s.name);
+            }
+            
+            return s.name;
+        }).join(', '));
         commonSets.push(row);
     });
 
