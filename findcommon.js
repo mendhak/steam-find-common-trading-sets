@@ -73,8 +73,8 @@ async function begin(firstUserProfileId, secondUserProfileId) {
     commonSetNames.forEach(c => {
         let row = [];
 
-        firstUserSetItems = firstUserSet.filter(f=>f.type==c);
-        secondUserSetItems = secondUserSet.filter(s=>s.type==c);
+        firstUserSetItems = firstUserSet.filter(f=>f.type==c).sort((a,b) => a.name.localeCompare(b.name));
+        secondUserSetItems = secondUserSet.filter(s=>s.type==c).sort((a,b) => a.name.localeCompare(b.name));
 
         //Find the common card names between both sets, so we can gray them out later. 
         namesOfCommonItemsInThisSet = firstUserSetItems.map(f => f.name).filter(f => secondUserSetItems.map(s=> s.name).includes(f));
@@ -83,7 +83,7 @@ async function begin(firstUserProfileId, secondUserProfileId) {
         row.push(chalk.green(c));
 
         //The card name
-        row.push(firstUserSet.filter(s => s.type==c).map(s => {
+        row.push(firstUserSetItems.map(s => {
 
             if(namesOfCommonItemsInThisSet.includes(s.name)){
                 return chalk.dim.white(s.name);
@@ -91,7 +91,7 @@ async function begin(firstUserProfileId, secondUserProfileId) {
             
             return s.name;
         }).join('\n'));
-        row.push(secondUserSet.filter(s => s.type==c).map(s => {
+        row.push(secondUserSetItems.map(s => {
 
             if(namesOfCommonItemsInThisSet.includes(s.name)){
                 return chalk.dim.white(s.name);
