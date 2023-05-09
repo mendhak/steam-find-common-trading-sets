@@ -9,8 +9,8 @@ const getData = async url => {
         return response.data;
    
     } catch (error) {
-        console.error(error.response.data);
-        console.error(error.response.status);
+        console.error(`Response data: ${error.response.data}`);
+        console.error(`Response status: ${error.response.status}`);
         console.error(error.response.headers);
     }
    
@@ -24,7 +24,7 @@ async function getTradingCardSet(profileId, startAssetId="") {
 
     const userInventory = await getData(`https://steamcommunity.com/inventory/${profileId}/753/6?l=english&count=5000&start_assetid=${startAssetId}`);
     
-    if(!userInventory.descriptions){
+    if( !userInventory?.descriptions ){
         console.error(`Could not fetch inventory for ${profileId}.`);
         process.exit(1);
     }
