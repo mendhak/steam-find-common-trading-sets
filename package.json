@@ -6,9 +6,13 @@
   "dependencies": {
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
+    "prompt-sync": "^4.2.0",
+    "read": "^2.1.0",
+    "steam-tradeoffer-manager": "^2.10.5",
+    "steam-user": "^4.28.3",
+    "steamcommunity": "^3.44.3",
     "table": "^6.0.7"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: failed successfully!\" && exit 0"
   },
